@@ -4,10 +4,29 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&family=Raleway&display=swap" rel="stylesheet">
+  <title>Journey: Travel-Tracker</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
+  <section class="login-page hidden">
+    <div class="journey-container">
+      <h1>JOURNEY</h1>
+      <h5>"quote here"</h5>
+    </div>
+    <div class="sign-in-container">
+      <div class="username-container">
+        <label class="username">Username:</label>
+        <input class="username-input" type="input"></input>
+      </div>
+      <div class="password-container">
+        <label class="password">Password:</label>
+        <input class="password-input" type="password"></input>
+        <button class="sign-in-button">Sign-In</button>
+      </div>
+    </div>
+  </section>
   
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
