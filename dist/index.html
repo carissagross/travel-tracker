@@ -13,7 +13,7 @@
   <section class="login-page hidden">
     <div class="journey-container">
       <h1>JOURNEY</h1>
-      <h5>"quote here"</h5>
+      <h5>. . . it starts here</h5>
     </div>
     <div class="sign-in-container">
       <div class="username-container">
@@ -30,7 +30,7 @@
   <section class="travel-dashboard-page">
     <div class="traveler-welcome-contatiner">
       <div class="traveler-welcome">
-        <h2>Welcome, Carissa Gross</h2>
+        <h2 class="welcome">Welcome, Carissa Gross</h2>
       </div>
       <div class="travel-bookings-container">
         <p class="total-spent">Total Cost of Trips this Year: #</p>
@@ -40,8 +40,10 @@
       </div>
     </div>
     <section class="book-a-trip-container">
+      <p>Book A Trip</p>
       <div class="select-trip-container">
-        <p class="select-date">Select Departure Date:</p>
+        <label class="trip-calendar">Select Depatrue Date:<label>
+        <input type="date" id="calendar" name="calendar">
         <p class="trip-duration">Trip Duration:</p>
         <p class="Number of Travelers">Number of Travelers:</p>
         <p class="Destination">Destination:</p>
@@ -51,14 +53,13 @@
         <button class="book-trip">Adventure Awaits!</button>
       </div>
     </section>
-    
     <section class="your-trips-container">
+      <p>Your Trips</p>
       <div class="trip-cards"></div>
     </section>
   </section>
   
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>
