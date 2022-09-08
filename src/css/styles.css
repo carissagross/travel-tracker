@@ -40,7 +40,6 @@ h1 {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-
 .login-page {
   background-image: url("/Users/carissagross/turing/mod2/projects/overlook-hotel/src/images/Home-Page-Image.png");
   background-repeat: no-repeat;
@@ -63,7 +62,7 @@ h1 {
   margin-top: 20px;
 }
 
-.username-input, .password-input {
+.username-input, .password-input, .date, .number-of-travelers, .number-of-days {
   height: 24px;
   width: 340px;
 }
@@ -95,6 +94,18 @@ h1 {
   width: 152.06px;
 }
 
+.view-estimate, .book-trip {
+    align-items: center;
+    background: #415651;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 80%;
+    height: 38.76px;
+    text-align: center;
+    width: 152.06px;
+}
+
 .travel-dashboard-page {
   background-image: url("/Users/carissagross/turing/mod2/projects/overlook-hotel/src/images/DSC04153.png");
   background-repeat: no-repeat;
@@ -103,9 +114,16 @@ h1 {
   flex-direction: column;
   height: 100%;
   width: 100%;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.traveler-welcome-contatiner {
+.book-trip-title-container {
+  display: flex;
+}
+
+.traveler-welcome-container {
   align-items: center;
   align-content: space-between;
   background: rgba(255, 255, 255, 0.8);
@@ -133,6 +151,7 @@ h1 {
 }
 
 .travel-bookings-container {
+  display: flex;
   margin-bottom: 2%;
   margin-left: 2%;
   width: 30%;
@@ -167,19 +186,22 @@ h1 {
   width: 55%;
 }
 
-.book-a-trip-container {
+.book-trip-container {
   align-content: center;
   align-items: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   background: rgba(255, 255, 255, 0.8);
-  display: grid;
-  grid-template: 1fr 1fr/ 1fr 1fr;
-  gap: 5px;
-  height: 25%;
+  display: flex;
+  height: 38%;
+  flex-direction: column;
+  flex-wrap: nowrap;
   justify-content: center;
-  justify-items: center;
   margin-top: 6%;
   width: 60%;
+}
+
+.book-trip-button-container {
+  display: flex;
 }
 
 .your-trips-container {
@@ -200,13 +222,15 @@ h1 {
 p {
     color: #415651;
     font-family: 'Merriweather';
-    font-size: 90%;
+    font-size: 100%;
     font-style: normal;
     font-weight: 600;
     line-height: 25px;
-    margin-bottom: 1%;
+    margin-bottom: 3%;
     margin-left: 8%;
   }
+
+
 
 
 
