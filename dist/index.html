@@ -43,7 +43,7 @@
 
     <section class="book-trip-container">
       <div class="book-trip-title-container">
-        <h6>Book A Trip<h6>
+        <h4>Book A Trip<h4>
       </div>
 
       <div class="select-trip-container">
@@ -54,17 +54,17 @@
       </div>
 
       <div class="number-of-travelers-container">
-        <label for="number-of-travelers">Number of Travelers:</label>
+        <label class="number-of-travelers">Number of Travelers:</label>
         <input type="number-of-travelers" id="quantity" name="quantity" min="1" max="20">
       </div>
 
       <div class="number-of-days-container">
-        <label for="number-of-days">Number of Days:</label>
+        <label class="number-of-days">Number of Days:</label>
         <input type="number-of-days" id="day-quantity" name="day-quantity">
       </div>
 
       <div class="select-destination-container">
-        <label class="dropdown-destination">Destination:</label>
+        <label class="destination">Destination:</label>
         <select class="dropdown-destination-input">
           <!-- <option tabindex="0" class="type-hover" value="all">all room types</option>
             <option tabindex="0" class="type-hover" value="residential suite">residential suite</option>
@@ -79,12 +79,16 @@
         <button class="book-trip">Adventure Awaits!</button>
       </div>
     </section>
-  </section>
   
     <section class="your-trips-container">
-      <p>Your Trips</p>
-      <div class="trip-cards"></div>
+      <div class="your-trips-title-container">
+        <h4>Your Trips<h4>
+      </div>
     </section>
+    <section class="your-trip-cards-container">
+      <div class="trip-cards"></div>      
+    </section>
+  </section>
   
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
