@@ -1,11 +1,11 @@
 class Destination {
-    constructor(id, destinationName, estLodgingCostPerDay, estFlightCostPerPerson, image, alt) {
-        this.id = id;
-        this.destinationName = destinationName;
-        this.estLodgingCostPerDay = estLodgingCostPerDay;
-        this.estFlightCostPerPerson = estFlightCostPerPerson;
-        this.image = image;
-        this.alt = alt;
+    constructor(destination) {
+        this.id = destination.id;
+        this.name = destination.name;
+        this.lodging = destination.estLodgingCostPerDay;
+        this.flights = destination.estFlightCostPerPerson;
+        this.image = destination.image;
+        this.alt = destination.alt;
     }
 }
 
