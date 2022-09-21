@@ -42,4 +42,10 @@ describe('Traveler', () => {
     expect(traveler1.type).to.equal('relaxer')
     expect(traveler2.type).to.equal('thrill-seeker')
   });
+
+  it('should return the first name of the traveler', () => {
+    expect(traveler1.returnTravelerFirstName()). to.equal('Ham')
+    expect(traveler2.returnTravelerFirstName()). to.equal('Rachael')
+  });
+
 });
