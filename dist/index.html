@@ -31,10 +31,10 @@
   <section class="travel-dashboard-page">
     <div class="traveler-welcome-container">
       <div class="traveler-welcome">
-        <h2 class="welcome">Welcome, Carissa Gross</h2>
+        <h2 class="welcome">Welcome, Carissa</h2>
       </div>
       <div class="travel-bookings-container">
-        <p class="total-spent">Total Cost of Trips this Year: #</p>
+        <p class="total-spent">Total Cost of Trips this Year: $0.00</p>
       </div>
       <div class="button-container">
         <button class="logout-button">Logout</button>
@@ -47,6 +47,12 @@
       </div>
 
       <div class="select-trip-container">
+        <div class="view-estimate-container hidden">
+          <p class="estimate">Estimate $0.00</p>
+        </div>
+        <div class="book-trip-container hidden">
+          <p class="book-trip">Your Trip Request has Been Processed.... etc</p>
+        </div>
         <div class="select-date-container">
           <label class="select-date">Select Departure Date:</label>
           <input type="date" id="calendar" name="calendar">
@@ -84,9 +90,12 @@
       <div class="your-trips-title-container">
         <h4>Your Trips<h4>
       </div>
-    </section>
-    <section class="your-trip-cards-container">
-      <div class="trip-cards"></div>      
+      <div class="your-trips-card-container">
+        <div class="trip-cards"></div>
+        <div class="trip-cards"></div>
+        <div class="trip-cards"></div>
+        <div class="trip-cards"></div>
+      </div>
     </section>
   </section>
   
