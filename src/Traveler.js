@@ -3,6 +3,11 @@ class Traveler {
         this.id = traveler.id;
         this.name = traveler.name;
         this.type = traveler.travelerType
+        this.trips = []
+    }
+
+    returnTravelerFirstName() {
+        return this.name.split(' ')[0]
     }
 }
 
