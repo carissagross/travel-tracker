@@ -105,20 +105,18 @@ describe('Traveler', () => {
           alt: "lit up city at night"
           },
           {
-          id: 6,
-          destination: "Jakarta, Indonesia",
-          estimatedLodgingCostPerDay: 70,
-          estimatedFlightCostPerPerson: 890,
-          image: "https://images.unsplash.com/photo-1555333145-4acf190da336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
-          alt: "lit up city at night"
-          }
+          id: 7,
+          destination: "Paris, France",
+          estimatedLodgingCostPerDay: 100,
+          estimatedFlightCostPerPerson: 395,
+          image: "https://images.unsplash.com/photo-1524396309943-e03f5249f002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
+          alt: "city during the day time with eiffel tower"
+          },
         ]
 
         destination1 = new Destination(destinationData[0])
         destination2 = new Destination(destinationData[1])
         destination3 = new Destination(destinationData[2])
-
-
   });
 
   it('should be a function', () => {
@@ -151,8 +149,7 @@ describe('Traveler', () => {
   });
 
   it('should find all user trips', () => {
-    expect(traveler1.findAllTravelerTrips(tripData)).to.deep.equal([
-      {
+    expect(traveler1.findMyTrips(tripData)).to.deep.equal([{
       id: 117,
       userID: 1,
       destinationID: 28,
@@ -161,9 +158,8 @@ describe('Traveler', () => {
       duration: 15,
       status: "approved",
       suggestedActivities: [ ]
-      }
-    ]);
-    expect(traveler2.findAllTravelerTrips(tripData)).to.deep.equal([{
+    }]);
+    expect(traveler2.findMyTrips(tripData)).to.deep.equal([{
       id: 89,
       userID: 2,
       destinationID: 10,
@@ -192,6 +188,40 @@ describe('Traveler', () => {
       duration: 8,
       status: "approved",
       suggestedActivities: [ ]
-      }];
+    }]);
   });
+
+    it('should find all user destinations', () => {
+      expect(traveler1.findMyDestinations(tripData, destinationData)).to.deep.equal([{
+          id: 28,
+          destination: "San Juan, Puerto Rico",
+          estimatedLodgingCostPerDay: 70,
+          estimatedFlightCostPerPerson: 900,
+          image: "https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80",
+          alt: "white and brown concrete buildings near sea under white clouds during daytime"
+        }])
+      expect(traveler2.findMyDestinations(tripData, destinationData)).to.deep.equal([{
+        id: 10,
+        destination: "Toronto, Canada",
+        estimatedLodgingCostPerDay: 90,
+        estimatedFlightCostPerPerson: 450,
+        image: "https://images.unsplash.com/photo-1535776142635-8fa180c46af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2756&q=80"
+        },
+        {
+        id: 6,
+        destination: "Jakarta, Indonesia",
+        estimatedLodgingCostPerDay: 70,
+        estimatedFlightCostPerPerson: 890,
+        image: "https://images.unsplash.com/photo-1555333145-4acf190da336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        alt: "lit up city at night"
+        },
+        {
+        id: 7,
+        destination: "Paris, France",
+        estimatedLodgingCostPerDay: 100,
+        estimatedFlightCostPerPerson: 395,
+        image: "https://images.unsplash.com/photo-1524396309943-e03f5249f002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
+        alt: "city during the day time with eiffel tower"
+      }])
+    });
 });

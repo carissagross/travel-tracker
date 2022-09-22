@@ -9,11 +9,31 @@ class Traveler {
         return this.name.split(' ')[0]
     }
 
-
-    findAllTravelerTrips(tripData) {
+    findMyTrips(tripData) {
         const findTrips = tripData.filter(trip => trip.userID === this.id)
         return findTrips
     }
+
+    findMyDestinations(tripData, destinationData) {
+        let trips = this.findMyTrips(tripData)
+        
+        let findDestinations = trips.reduce((acc, trip) => {
+            destinationData.forEach(destination => {
+                if (trip.destinationID === destination.id) {
+                    acc.push(destination)
+                }
+            })
+            return acc
+        }, [])
+        return findDestinations
+    }
+
+    // calculateTotalAmountSpentOnTrips(tripData, destinationData) {
+
+    //     let lodgingCost = tripData.duration * destinationData.estimatedLodgingCostPerDay
+    //     let flightCost = tripData.travelers * destinationData.estimatedFlightCostPerPerson
+    //     let totalTripCost = lodgingCost + flightCost
+    // }
 
 
 
@@ -25,9 +45,9 @@ class Traveler {
     // 5. Plus 10% agent fee
 
     // method to find traveler.id
+    // how to find the year of costs
 
     // lodgingCost = trips.duration * destination.estimatedLodgingCostPerDay
     // flightCost = trips.travelers * destination.estimatedFlightCostPerPerson
 }
-
 export default Traveler;
