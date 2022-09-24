@@ -15,7 +15,7 @@ class Traveler {
     }
 
     findMyDestinations(tripData, destinationData) {
-        let trips = this.findMyTrips(tripData)
+        const trips = this.findMyTrips(tripData)
         
         let destinations = trips.reduce((acc, trip) => {
             destinationData.forEach(destination => {
@@ -29,11 +29,11 @@ class Traveler {
     }
 
     calculateTripCost(tripData, destinationData) {
-        let findTrips = this.findMyTrips(tripData)
+        const trips = this.findMyTrips(tripData)
         let lodgingCost;
         let flightCost;
 
-        let findTripCost = findTrips.reduce((acc, trip) => {
+        let findTripCost = trips.reduce((acc, trip) => {
             destinationData.forEach(destination => {
                 if (trip.destinationID === destination.id) {
                     lodgingCost = trip.duration * destination.estimatedLodgingCostPerDay
@@ -45,8 +45,27 @@ class Traveler {
         }, 0)
         return findTripCost
     }
+
+    findPastTrips(tripData, destinationData) {
+        const trips = this.findMyTrips(tripData)
+        const currentYear = (new Date()).getFullYear().toString();
+
+        const pastTrips = trips.filter(trip => trip.date < currentYear)
+        console.log(pastTrips)
+        return pastTrips
+    }
     
     calculateSpentOnTripsForYear(tripData, destinationData) {
+        const trips = this.findMyTrips(tripData)
+
+        const currentYear = (new Date()).getFullYear().toString();
+        console.log(currentYear)
+
+        const findTripsThisYear = trips.filter(trip => trip.date.includes(currentYear)).filter(trip => trip.status === 'approved')
+
+    // getFullYear() method returns the year of the specified date according to local time.
+    // new Date() can create a Date instance or return a string representing the current time.
+    // toString() method returns a string representing the object.
     
         // a year of trips January to December
         // 1. traveler.id === trip.userID
@@ -58,9 +77,6 @@ class Traveler {
         // invoke calculateTripCost()
         // trip date year and whatever date you want to bring back
         // increment acc by calculate trip costs
-    // }
-
-  
     }
 }
 export default Traveler;
