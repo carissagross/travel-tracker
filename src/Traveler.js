@@ -54,9 +54,6 @@ class Traveler {
         return pastTrips
     }
 
-    findUpcomingTrips() {
-        
-    }
     
     calculateSpentOnTripsForYear(tripData, destinationData) {
         const trips = this.findMyTrips(tripData)
