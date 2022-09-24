@@ -254,7 +254,7 @@ describe('Traveler', () => {
     });
 
     it('should calculate total amount spent on trips for the past year', () => {
-      // expect(traveler1.calculateSpentOnTripsForYear(tripData, destinationData)).to.equal(4125)
-      expect(traveler2.calculateSpentOnTripsForYear(tripData, destinationData)).to.equal(4125)
+      expect(traveler1.calculateSpentOnTripsForYear(tripData, destinationData)).to.equal(0)
+      expect(traveler2.calculateSpentOnTripsForYear(tripData, destinationData)).to.equal(2183.5)
     });
 });

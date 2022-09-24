@@ -46,22 +46,38 @@ class Traveler {
         return findTripCost
     }
 
-    findPastTrips(tripData, destinationData) {
+    findPastTrips(tripData) {
         const trips = this.findMyTrips(tripData)
         const currentYear = (new Date()).getFullYear().toString();
 
         const pastTrips = trips.filter(trip => trip.date < currentYear)
-        console.log(pastTrips)
         return pastTrips
+    }
+
+    findUpcomingTrips() {
+        
     }
     
     calculateSpentOnTripsForYear(tripData, destinationData) {
         const trips = this.findMyTrips(tripData)
+        let lodgingCost;
+        let flightCost;
 
         const currentYear = (new Date()).getFullYear().toString();
-        console.log(currentYear)
-
         const findTripsThisYear = trips.filter(trip => trip.date.includes(currentYear)).filter(trip => trip.status === 'approved')
+        console.log(findTripsThisYear)
+        
+        const yearlyTripCost = findTripsThisYear.reduce((acc, trip) => {
+            destinationData.forEach(destination => {
+                if (trip.destinationID === destination.id) {
+                    lodgingCost = trip.duration * destination.estimatedLodgingCostPerDay
+                    flightCost = trip.travelers * destination.estimatedFlightCostPerPerson
+                }
+            })
+            acc = (lodgingCost + flightCost) * 1.1
+            return acc
+        }, 0)
+        return yearlyTripCost
 
     // getFullYear() method returns the year of the specified date according to local time.
     // new Date() can create a Date instance or return a string representing the current time.
