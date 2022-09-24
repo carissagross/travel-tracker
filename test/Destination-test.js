@@ -22,7 +22,8 @@ describe('Destination', () => {
             destination: "Toronto, Canada",
             estimatedLodgingCostPerDay: 90,
             estimatedFlightCostPerPerson: 450,
-            image: "https://images.unsplash.com/photo-1535776142635-8fa180c46af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2756&q=80"
+            image: "https://images.unsplash.com/photo-1535776142635-8fa180c46af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2756&q=80",
+            alt: "city during the day near a beatiful body of water"
             },
             {
             id: 6,
@@ -80,8 +81,8 @@ describe('Destination', () => {
             expect(destination2.image).to.equal('https://images.unsplash.com/photo-1535776142635-8fa180c46af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2756&q=80')
         });
 
-        it.skip('should have alternate text for an image', () => {
+        it('should have alternate text for an image', () => {
             expect(destination1.alt).to.equal('white and brown concrete buildings near sea under white clouds during daytime')
-            expect(destination2.alt).to.equal('city with boats on the water during the day time')
+            expect(destination2.alt).to.equal('city during the day near a beatiful body of water')
         });
 });

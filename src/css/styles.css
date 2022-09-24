@@ -1,16 +1,14 @@
 * {
   margin: 0;
-  padding:0;
+  padding: 0;
 }
 
 body {
+  display: flex;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
  }
-
-/* body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-} */
 
 .login-page {
   background-image: url("/Users/carissagross/turing/mod2/projects/travel-tracker/src/images/Home-Page-Image.png");
@@ -58,6 +56,10 @@ h5 {
   width: 100%;
 }
 
+.username-label, .password-label {
+  margin-bottom: 20px;
+}
+
 /* .username, .password, .sign-in-button {
   display: flex;
   line-height: 25px;
@@ -69,7 +71,6 @@ h5 {
   margin-bottom: 10px;
   margin-top: 20px;
 } */
-
 
 .username, .password, .sign-in-button {
   display: flex;
@@ -92,18 +93,6 @@ h5 {
   display: flex;
 } */
 
-.destination {
-  margin-right: 2px;
-}
-
-.dropdown-destination-input {
-  width: 40%;
-}
-
-.username-label, .password-label {
-  margin-bottom: 20px;
-}
-
 .sign-in-button {
   align-items: center;
   background: #415651;
@@ -120,9 +109,6 @@ h5 {
 
 .travel-dashboard-page {
   align-items: center;
-  background-image: url("/Users/carissagross/turing/mod2/projects/travel-tracker/src/images/DSC04153.png");
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -144,6 +130,7 @@ h5 {
 }
 
 .traveler-welcome {
+  margin-left: 2%;
   width: 33%;
 }
 
@@ -176,7 +163,7 @@ h5 {
   margin-left: 2%;
 }
 
-.button-container {
+.logout-button-container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -194,20 +181,34 @@ h5 {
   width: 55%;
 }
 
+.filter-and-display-container {
+  background-image: url("/Users/carissagross/turing/mod2/projects/travel-tracker/src/images/DSC04153.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 70%;
+  justify-content: flex-start;
+  width: 100%;
+}
+
 .book-trip-container {
   align-content: center;
   align-items: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   background: rgba(255, 255, 255, 0.8);
   display: flex;
-  height: 38%;
+  height: 30%;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-evenly;
   margin-top: 5%;
-  padding-bottom: 2%;
+  margin-bottom: 2%;
+  padding-bottom: 3%;
   padding-top: 2%;
-  width: 70%;
+  width: 60%;
 }
 
 .book-trip-title-container {
@@ -215,15 +216,15 @@ h5 {
   align-items: center;
   color: #415651;
   font-weight: 800;
-  font-family: 'Raleway', sans-serif;
+  /* font-family: 'Raleway', sans-serif; */
   display: flex;
-  width: 20%;
+  width: 60%;
   height: 20%;
   flex-direction: column;
-  margin-top: 1%;
+  margin-bottom: 2%;
 }
 
-.your-trips-title-container {
+h4 {
   align-content: center;
   align-items: center;
   color: #415651;
@@ -236,28 +237,38 @@ h5 {
   margin-top: 3%;
 }
 
+.destination {
+  margin-right: 2px;
+}
+
+.dropdown-destination-input {
+  width: 40%;
+}
+
 .book-trip-button-container {
   display: flex;
 }
 
-
-
-.select-date, .number-of-travelers, .number-of-days, .destination {
+.select-date, .number-of-travelers, .number-of-days, .destination, .trip-estimate {
   color: #415651;
   font-family: 'Merriweather';
   font-size: 80%;
 }
 
+.trip-estimate-container {
+  width: 15%;
+}
+
 .select-destination-container {
   display: flex;
-  width: 40%;
+  width: 30%;
 }
 
 .dropdown-destination-input {
   width: 80%;
 }
 
-.view-estimate, .book-trip {
+.book-trip {
   align-items: center;
   background: #415651;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -271,20 +282,6 @@ h5 {
   width: 152.06px;
 }
 
-.your-trips-container {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background: rgba(255, 255, 255, 0.8);
-  height: 38%;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  margin-top: 5%;
-  width: 85%;
-}
-
 p {
   color: #415651;
   font-family: 'Merriweather';
@@ -296,24 +293,46 @@ p {
   margin-left: 8%;
   }
 
-.your-trips-card-container {
-  width: 50%;
-  height: 100%;
-  display: grid;
-  grid-template: 1fr 1fr/ 1fr 1fr;
-  gap: 50%;
+.all-trips-container-section {
   align-content: center;
-  justify-content: center;
-  align-items: start;
-  justify-items: center;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  width: 80%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 2%;
+  padding-bottom: 3%;
+  padding-top: 2%;
 }
 
-.trip-cards {
+.your-trips-title {
+  display: flex;
+  height: 20%;
+}
+
+.trip-card-container {
+  display: flex;
+  width: 100%;
+  height: 80%;
+  overflow: scroll;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.trip-card1, .trip-card2, .trip-card3, .trip-card4 {
   background-color: white;
-  height: 300%;
-  width: 200%;
+  width: 400px;
+  height: 250px;
+  border-style: dotted;
+  border-color: purple;
+  margin: 50px;
 }
-
 
 .hidden {
   display: none;

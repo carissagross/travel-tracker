@@ -9,6 +9,16 @@ class Trip {
         this.status =tripData.status;
         this.suggestedActivities = tripData.suggestedActivities;
     }
+
+    // findPendingTrips(tripData) {
+    //     const findPendingTrips = tripData.filter(trip => trip.status === 'pending')
+    //     return findPendingTrips
+    // }
+
+    // findApprovedTrips(tripData) {
+    //     const findApprovedTrips = tripData.filter(trip => trip.status === 'approved')
+    //     return findApprovedTrips
+    // }
 }
 
 export default Trip;

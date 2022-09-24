@@ -224,4 +224,13 @@ describe('Traveler', () => {
         alt: "city during the day time with eiffel tower"
       }])
     });
+
+    it('should calculate trip costs', () => {
+      expect(traveler1.calculateTripCost(tripData, destinationData)).to.equal(4125)
+      expect(traveler2.calculateTripCost(tripData, destinationData)).to.equal(2183.5)
+    })
+
+    it.skip('should calculate total amount spent on trips for the past year', () => {
+      expect(traveler1.calculateTotalSpentOnTrips(tripData, destinationData)).to.equal(4125)
+    });
 });

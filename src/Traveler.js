@@ -17,7 +17,7 @@ class Traveler {
     findMyDestinations(tripData, destinationData) {
         let trips = this.findMyTrips(tripData)
         
-        let findDestinations = trips.reduce((acc, trip) => {
+        let destinations = trips.reduce((acc, trip) => {
             destinationData.forEach(destination => {
                 if (trip.destinationID === destination.id) {
                     acc.push(destination)
@@ -25,29 +25,42 @@ class Traveler {
             })
             return acc
         }, [])
-        return findDestinations
+        return destinations
     }
 
-    // calculateTotalAmountSpentOnTrips(tripData, destinationData) {
+    calculateTripCost(tripData, destinationData) {
+        let findTrips = this.findMyTrips(tripData)
+        let lodgingCost;
+        let flightCost;
 
-    //     let lodgingCost = tripData.duration * destinationData.estimatedLodgingCostPerDay
-    //     let flightCost = tripData.travelers * destinationData.estimatedFlightCostPerPerson
-    //     let totalTripCost = lodgingCost + flightCost
+        let findTripCost = findTrips.reduce((acc, trip) => {
+            destinationData.forEach(destination => {
+                if (trip.destinationID === destination.id) {
+                    lodgingCost = trip.duration * destination.estimatedLodgingCostPerDay
+                    flightCost = trip.travelers * destination.estimatedFlightCostPerPerson
+                }
+            })
+            acc = (lodgingCost + flightCost) * 1.1
+            return acc
+        }, 0)
+        return findTripCost
+    }
+    
+    calculateSpentOnTripsForYear(tripData, destinationData) {
+    
+        // a year of trips January to December
+        // 1. traveler.id === trip.userID
+        // 2. trip.destinationID === destination.id
+
+        // find the date (tripData.date)
+        // if (tripData.date.slice(0, 4) === '2022')
+        // first four numbers in the date
+        // invoke calculateTripCost()
+        // trip date year and whatever date you want to bring back
+        // increment acc by calculate trip costs
     // }
 
-
-
-    // find total cost of trips
-    // 1. traveler.id === trip.userID
-    // 2. trip.destinationID === destination.id
-    // 3. Trip duration x estimated lodging
-    // 4. Flight costs x number of travelers
-    // 5. Plus 10% agent fee
-
-    // method to find traveler.id
-    // how to find the year of costs
-
-    // lodgingCost = trips.duration * destination.estimatedLodgingCostPerDay
-    // flightCost = trips.travelers * destination.estimatedFlightCostPerPerson
+  
+    }
 }
 export default Traveler;
