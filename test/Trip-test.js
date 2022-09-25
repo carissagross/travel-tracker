@@ -108,6 +108,5 @@ describe('Trip', () => {
 
     it('should determine the status of each trip', () => {
         expect(trip1.findPastTrips(tripData)).to.equal('approved')
-        
     })
 });

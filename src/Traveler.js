@@ -72,17 +72,6 @@ class Traveler {
     // getFullYear() method returns the year of the specified date according to local time.
     // new Date() can create a Date instance or return a string representing the current time.
     // toString() method returns a string representing the object.
-    
-        // a year of trips January to December
-        // 1. traveler.id === trip.userID
-        // 2. trip.destinationID === destination.id
-
-        // find the date (tripData.date)
-        // if (tripData.date.slice(0, 4) === '2022')
-        // first four numbers in the date
-        // invoke calculateTripCost()
-        // trip date year and whatever date you want to bring back
-        // increment acc by calculate trip costs
     }
 }
 export default Traveler;

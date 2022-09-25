@@ -6,9 +6,10 @@ import './css/styles.css';
 import Traveler from './Traveler'
 import Destination from './Destination'
 import Trip from './Trip'
+import TripsRepo from './TripsRepo';
 
 import { getTravelersApi, getDestinationsApi, getTripsApi } from './apiCalls'
-import TripsRepo from './TripsRepo';
+
 
 // GLOBAL VARIALBES //
 let travelerData;
@@ -72,33 +73,22 @@ function displayTotalAmountSpent() {
 }
 
 function renderTrips() {
-    const trips = traveler.findMyTrips(tripData)
-    console.log(trips)
-
-    const findDestinations = traveler.findMyDestinations(tripData, destinationData)
-    console.log(findDestinations)
-    
-//     const findDestination = findTrips.forEach(trip => {
-//         destinationData.forEach(destination => {
-//             if (trip.destinationID === destination.id)
-//         })
-//     })
-
-//     // Array of trips
-//     // Array of destinations
-//     // How do we access BOTH for interpolation
-//     // ForEach and a forEach
-   
-//     console.log('DESTINATIONS', findDestinations)
-
-    // tripCardContainer.innerHTML = `<div class="trip-card">
-    // <img class="destination-image" src="${findDestinations.image}" alt="${findDestinations.alt}">
-    // <div class="trip-details"><h3 class='location-name">${findDestinations.destination}</h3>
-    // <p>Trip Date: ${findTrips.date}</p><p>Status: ${findTrips.status}</p>
-    // <p class="trip-duration">${findTrips.duration}</p>
-    // <p class="trip-travelers">${findTrips.travelers}</p></div></div>`
+    tripCardContainer.innerHTML = ''
+    const allDetails = allTrips.updateTripDetails(trips, destinations)
+    const tripRender = allDetails.forEach(trip => {
+        if (trip.userID === traveler.id) {
+            tripCardContainer.innerHTML +=
+            `<div class="trip-card">
+              <img class="destination-image" src="${trip.image}" alt="${trip.alt}">
+              <div class="trip-details">
+                <p class="location-name"> ${trip.destination}</p>
+                <p class="trip-date">Trip Date: ${trip.date}</p>
+                <p class="status">Status: ${trip.initialStatus}</p>
+                <p class="trip-duration">Trip Duration: ${trip.duration}</p>
+                <p class="trip-travelers">Travelers: ${trip.travelers}</p>
+            </div>`
+        }
+    })
 }
-
-
-
+        
 console.log('This is the JavaScript entry file - your code begins here.');
