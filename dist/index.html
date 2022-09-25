@@ -71,7 +71,7 @@
   
         <div class="select-destination-container">
           <label class="destination"> Destination:</label>
-          <select class="dropdown-destination-input">
+          <select id="select-destination" name="destination-selection" class="dropdown-destination-input" required>
           </select>
         </div>
     
@@ -80,7 +80,8 @@
         </div>
   
         <div class="book-trip-button-container">
-          <button class="book-trip">Adventure Awaits!</button>
+          <button class="book-trip-button">Adventure Awaits!</button>
+          <p class="error-message"></p>
         </div>
       </section>
     
@@ -89,13 +90,24 @@
           <h4>Your Trips</h4>
         </div>
         <div class="trip-card-container">
-          <div class="trip-card1"></div>
-          <div class="trip-card2"></div>
+          <div class="trip-card1">
+            <p>card title</p>
+          </div>
+          <div class="trip-card2">
+            <p>card title</p>
+          </div>
           <div class="trip-card3">
-            <p>Card Title</p>
+            <!-- <img class="destination-image" src="destinationData.destination.image" alt="destination.alt">
+            <div class="trip-details">
+              <h3 class="location-name">destination.location</h3>
+              <p>Trip Date: trip.date</p>
+              <p>Status: trip.status</p>
+              <p class="trip-duration">trip.duration days</p>
+              <p class="trip-travelers">trip.travelers</p> -->
+            <!-- </div> -->
           </div>
           <div class="trip-card4">
-            <p>Card Title</p>
+            <p>card title</p>
           </div>
         </div>
       </section>

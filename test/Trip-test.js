@@ -106,7 +106,8 @@ describe('Trip', () => {
         expect(trip2.suggestedActivities).to.deep.equal([])
     });
 
-    it('should find pending trips', () => {
+    it('should determine the status of each trip', () => {
+        expect(trip1.findPastTrips(tripData)).to.equal('approved')
         
     })
 });

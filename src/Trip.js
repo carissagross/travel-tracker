@@ -1,24 +1,34 @@
 class Trip {
-    constructor(tripData) {
-        this.id = tripData.id;
-        this.userID = tripData.userID;
-        this.destinationID = tripData.destinationID;
-        this.travelers =  tripData.travelers;
-        this.date = tripData.date;
-        this.duration = tripData.duration;
-        this.status =tripData.status;
-        this.suggestedActivities = tripData.suggestedActivities;
+    constructor(destination, trip) {
+        this.initialStatus = trip.status;
+        this.id = trip.id;
+        this.userID = trip.userID;
+        this.destinationID = trip.destinationID;
+        this.travelers =  trip.travelers;
+        this.date = trip.date;
+        this.duration = trip.duration;
+        this.status = this.findPastTrips()
+        this.suggestedActivities = trip.suggestedActivities;
+        this.timeStamp = new Date(this.date).getTime()
+        this.currentDate = new Date().getTime()
     }
+    // method to filter status
+    // only change the status IF the date is past
+    // if date is past === status is 'Past Trips'
+    // if date is greater than current date, then status ==== status
 
-    // findPendingTrips(tripData) {
-    //     const findPendingTrips = tripData.filter(trip => trip.status === 'pending')
-    //     return findPendingTrips
-    // }
 
-    // findApprovedTrips(tripData) {
-    //     const findApprovedTrips = tripData.filter(trip => trip.status === 'approved')
-    //     return findApprovedTrips
-    // }
+
+    findPastTrips() {
+        if (this.timeStamp <= this.currentDate) {
+            this.status = 'Past Trip' 
+        } else {
+            this.initilStatus
+        }
+    }
 }
+
+
+
 
 export default Trip;
