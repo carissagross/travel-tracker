@@ -72,14 +72,16 @@
         <div class="select-destination-container">
           <label class="destination"> Destination:</label>
           <select id="select-destination" name="destination-selection" class="dropdown-destination-input" required>
+            <option disabled selected></option>
           </select>
         </div>
     
-        <div class="trip-estimate-container">
+        <div class="trip-estimate-container hidden">
           <p class="trip-estimate">Trip Estimate:</p>
         </div>
   
         <div class="book-trip-button-container">
+          <button class="view-estimate-button">View Estimate</button>
           <button class="book-trip-button">Adventure Awaits!</button>
           <p class="error-message"></p>
         </div>

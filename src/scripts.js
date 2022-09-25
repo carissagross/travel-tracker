@@ -1,6 +1,5 @@
 // IMPORTS //
 import './css/styles.css';
-// import './images/turing-logo.png'
 // import './images/DSC04153.png'
 
 import Traveler from './Traveler'
@@ -37,16 +36,19 @@ function getAllData() {
 // POST API DATA //
 
 // QUERY SELECTORS //
+const loginPage = document.querySelector('.login-page')
 const userName = document.querySelector('.username')
 const password = document.querySelector('.password')
 const signInButton = document.querySelector('.sign-in-button')
+const logoutButton = document.querySelector('.logout-button')
 const userNameDisplay = document.querySelector('.welcome')
 const totalSpent = document.querySelector('.total-spent')
 const tripCardContainer = document.querySelector('.trip-card-container')
-const logoutButton = document.querySelector('.logout-button')
-const bookTripButton = document.querySelector('.book-trip-button')
+const destinationOptions = document.querySelector('.dropdown-destination-input')
 const selectDate = document.getElementById('.select-date-calendar')
 const numberOfTravelers = document.getElementById('.number-of-travelers')
+const viewEstimateButton = document.querySelector('.view-estimate-button')
+const bookTripButton = document.querySelector('.book-trip-button')
 
 
 
@@ -59,6 +61,7 @@ function populateDashboard() {
     displayTravelerName()
     displayTotalAmountSpent()
     renderTrips()
+    displayDestinationOptions()
 }
 
 // DOM MANIPULATION //
@@ -70,6 +73,12 @@ function displayTravelerName() {
 function displayTotalAmountSpent() {
     const displayTotal = traveler.calculateSpentOnTripsForYear(destinationData)
     totalSpent.innerText = `Total Cost of Trips this Year: $${displayTotal.toFixed(2)}`
+}
+function displayDestinationOptions() {
+    const destinations = destinationData.forEach(destination => {
+        destinationOptions.innerHTML += `
+        <option>${destination.destination}</option>`
+    })
 }
 
 function renderTrips() {
@@ -90,5 +99,13 @@ function renderTrips() {
         }
     })
 }
+
+// function hide(element) {
+//     element.classList.add('hidden');
+//   };
+  
+//   function unhide(element) {
+//     element.classList.remove('hidden');
+//   };
         
 console.log('This is the JavaScript entry file - your code begins here.');
