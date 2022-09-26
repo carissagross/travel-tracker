@@ -51,7 +51,6 @@ const tripEstimateContainer = document.querySelector('.trip-estimate-container')
 const inputErrorMessage = document.querySelector('.input-error-container')
 
 // EVENT LISTENERS //
-// window.addEventListener('load', getAllData())
 window.onload = () => loadWindow()
 signInButton.addEventListener('click', function() {
     loadTravelerDashboard()
