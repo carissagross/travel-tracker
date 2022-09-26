@@ -2,8 +2,6 @@
 import './css/styles.css';
 
 import Traveler from './Traveler'
-import Destination from './Destination'
-import Trip from './Trip'
 import TripsRepo from './TripsRepo';
 
 import { sendAllData, postTripApi } from './apiCalls'
