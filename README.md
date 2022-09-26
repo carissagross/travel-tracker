@@ -8,7 +8,7 @@
 - [Challenges](Challenges)
 - [Sources](Sources)
 - [Challenges](Challenges)
-- [Set Up](Set Up)
+- [Set-Up](Set-Up)
 
 
 ## Introduction
@@ -51,7 +51,7 @@
 ## Contributors
 - [Carissa Gross](https://github.com/carissagross)
 
-## Set Up
+## Set-Up
 1. Fork and clone this repo.
 2. Read the README thoroughly
 3. Type cd travel-tracker to move into the root directory
