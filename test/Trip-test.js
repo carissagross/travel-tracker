@@ -103,6 +103,11 @@ describe('Trip', () => {
         expect(trip2).to.be.an.instanceOf(Trip)
     })
 
+    it('should have an inital status', () => {
+        expect(trip1.initialStatus).to.equal('approved')
+        expect(trip2.initialStatus).to.equal('approved')
+    })
+
     it('should have an ID', () => {
         expect(trip1.id).to.equal(117)
         expect(trip2.id).to.equal(89)
@@ -133,21 +138,53 @@ describe('Trip', () => {
         expect(trip2.duration).to.equal(13)
     })
 
-    it('should have a trip status', () => {
-        expect(trip1.status).to.equal('approved')
-        expect(trip2.status).to.equal('approved')
-    })
-
     it('should have suggested activities', () => {
         expect(trip1.suggestedActivities).to.deep.equal([])
         expect(trip2.suggestedActivities).to.deep.equal([])
     })
-    
+
     it('should have a time stamp', () => {
-        expect(trip1.timeStamp).to.equal()
+        expect(trip1.timeStamp).to.equal(1610175600000)
+        expect(trip2.timeStamp).to.equal(1569564000000)
+    })
+
+    it('should have a destination id', () => {
+        expect(trip1.destinationId).to.equal(28)
+        expect(trip2.destinationId).to.equal(10)
+    })
+
+    it('should have a destination name', () => {
+        expect(trip1.destination).to.equal('San Juan, Puerto Rico')
+        expect(trip2.destination).to.equal('Toronto, Canada')
+    })
+
+    it('should have a destination name', () => {
+        expect(trip1.destination).to.equal('San Juan, Puerto Rico')
+        expect(trip2.destination).to.equal('Toronto, Canada')
+    })
+
+    it('should have an estimated lodging cost per day', () => {
+        expect(trip1.estimatedLodgingCostPerDay).to.equal(70)
+        expect(trip2.estimatedLodgingCostPerDay).to.equal(90)
+    })
+
+    it('should have an estimated flight cost per person', () => {
+        expect(trip1.estimatedFlightCostPerPerson).to.equal(900)
+        expect(trip2.estimatedFlightCostPerPerson).to.equal(450)
+    })
+
+    it('should have an image', () => {
+        expect(trip1.image).to.equal('https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80')
+        expect(trip2.image).to.equal('https://images.unsplash.com/photo-1535776142635-8fa180c46af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2756&q=80')
+    })
+
+    it('should have alternate text for an image', () => {
+        expect(trip1.alt).to.equal('white and brown concrete buildings near sea under white clouds during daytime')
+        expect(trip2.alt).to.equal('city during the day near a beatiful body of water')
     })
 
     it('should determine the status of each trip', () => {
-        expect(trip1.findPastTrips()).to.equal('approved')
+        expect(trip1.findPastTrips()).to.equal('Past Trip')
+        expect(trip2.findPastTrips()).to.equal('Past Trip')
     })
 })
