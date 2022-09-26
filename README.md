@@ -15,6 +15,11 @@
 **Login Page**
 <img width="1606" alt="Screen Shot 2022-09-26 at 8 41 56 AM" src="https://user-images.githubusercontent.com/83977544/192309170-7ca101ef-b3c8-4cca-ad15-077dea0b793e.png">
 
+**Traveler Dashboard**
+<img width="1356" alt="Screen Shot 2022-09-26 at 5 34 49 PM" src="https://user-images.githubusercontent.com/83977544/192398918-0e3789e2-427d-49b3-88d1-d66609b7d0ee.png">
+
+![Application Preview_1](https://user-images.githubusercontent.com/83977544/192398948-49f4c210-b1c5-44f5-b5b0-484fecb8647e.gif)
+
 ## Features
 **Login:** On load, the user sees a login form.  To log in, enter ```traveler``` followed by a number between 1 and 50. The password for all users is ```travel```.
 
