@@ -1,96 +1,66 @@
-# Webpack Starter Kit
+# Journey (Travel Tracker)
 
-## Clone This Repo
+## Table of Contents
+- [Introduction](Introduction)
+- [Technologies](Technologies)
+- [Illustrations](Illustrations)
+- [Features](Features)
+- [Challenges](Challenges)
+- [Sources](Sources)
+- [Challenges](Challenges)
+- [Set Up](Set Up)
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+## Introduction
+- Travel Tracker is the final solo project for Mod 2 of Turing School of Software & Design. This project focused on using Test Driven Development and Object Oriented Programming to build an interactive travel site where users can log in to view their trips and book a new trip. The Fetch API was used to retrieve and post data. Specifications for this project can be found link [here](https://frontend.turing.edu/projects/travel-tracker.html).
 
-Now try to commit something (just add a line in the README) and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+## Technologies
+- JavaScript
+- HTML
+- CSS
+- TDD (Mocha & Chai)
+- VSCode
+- Webpack
 
-## Setup
+## Illustrations
+**Login Page**
+<img width="1606" alt="Screen Shot 2022-09-26 at 8 41 56 AM" src="https://user-images.githubusercontent.com/83977544/192309170-7ca101ef-b3c8-4cca-ad15-077dea0b793e.png">
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo.
+## Features
+**Login:** On load, the user sees a login form.  To log in, enter ```traveler``` followed by a number between 1 and 50. The password for all users is ```travel```.
 
-Then install the library dependencies. Run:
+**Traveler Dashboard:** Once the user is logged in, they can see all of their trips displayed and sorted by date.  The dashboard header also includes the amount they have spent on trips this year.
 
-```bash
-npm install
-```
+**Book a Trip:** A booking form is displayed on the dashboard so the user can fill out the form to request a new trip.  They are able to view an estimated cost before booking.  Upon submission, the new trip populates with a status of "Pending".
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with the Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+**Accessibility:** This application was tested with Lighthouse and the WAVE Chrome extension.
 
-## Where to Add Your Code
+## Possible Future Extentions
+- Add local storage to saved trips.
+- Allow users to filter their trips
+- Add a traveler profile so user can view their account details
 
-### JavaScript
+## Challenges
+- Navigating the complexity and vastness of this project was a challenge.  Organization and solving small problems at a time were extremely important.
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+## Sources
+- All images used on the login and traveler dashboard were photos that I have taken on Colorado adventures
+- [Carissa Gross Photography](https://www.carissagrossphotography.com/)
+- MDN
 
-**Create all of your feature code files in the `src` directory.**
+## Contributors
+- [Carissa Gross](https://github.com/carissagross)
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+## Set Up
+1. Fork and clone this repo.
+2. Read the README thoroughly
+3. Type cd travel-tracker to move into the root directory
+4. Run ```npm install``` to install necessary dependencies
+5. Run ```npm start```
+6. Copy the URL given by running ```npm start``` in your browser.
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
 
-### HTML
 
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`scripts.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
 
 _If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
 
