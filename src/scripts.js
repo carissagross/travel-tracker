@@ -1,13 +1,12 @@
 // IMPORTS //
 import './css/styles.css';
-// import './images/DSC04153.png'
 
 import Traveler from './Traveler'
 import Destination from './Destination'
 import Trip from './Trip'
 import TripsRepo from './TripsRepo';
 
-import { getTravelersApi, getDestinationsApi, getTripsApi, postTripApi } from './apiCalls'
+import { sendAllData, postTripApi } from './apiCalls'
 
 // GLOBAL VARIALBES //
 let travelerData;
@@ -20,14 +19,15 @@ let trips;
 
 // PROMISE //
 const getAllData = () => {
-    Promise.all([getTravelersApi, getDestinationsApi, getTripsApi]).then((data) => {
+    sendAllData(10)
+    .then((data) => {
+        console.log(data)
         travelerData = data[0].travelers
         destinationData = data[1].destinations
         tripData = data[2].trips
         allTrips = new TripsRepo(tripData, destinationData)
-        traveler = new Traveler(travelerData[28], allTrips)
+        traveler = new Traveler(data[3], allTrips)
         populateDashboard()
-        //pass in id for single customer from login currentTraveler
     })
 }
 
@@ -50,7 +50,6 @@ const bookTripButton = document.querySelector('.book-trip-button')
 const tripEstimate = document.querySelector('.trip-estimate')
 const tripEstimateContainer = document.querySelector('.trip-estimate-container')
 const inputErrorMessage = document.querySelector('.input-error-container')
-// const errorMessage = document.querySelector('.input-error-message')
 
 // EVENT LISTENERS //
 window.addEventListener('load', getAllData())
@@ -60,8 +59,6 @@ viewEstimateButton.addEventListener('click', function() {
 bookTripButton.addEventListener('click', function() {
     bookTrip()
 })
-// logoutButton.addEventListener('click', travelerLogout)
-// signInButton.addEventListener('click', travelerSignIn)
 
 // HANDLER FUNCTIONS //
 const populateDashboard = () => {
@@ -88,50 +85,47 @@ const viewEstimate = () => {
    }
 }
 
-// const travelerSignIn = () => {
-//     const travelerUserName = userName.value
-//     const travelerPassword = password.value
-
-//     if (travelerUserName)
-
-//     dashboardPage.classList.remove('hidden')
-//     loginPage.classList.add('hidden')
-// }
-
-// const travelerLogout = () => {
-//     dashboardPage.classList.add('hidden')
-//     loginPage.classList.remove('hidden')
-// }
-
 const bookTrip = () => {
     const destinationName = destinationOptions.value
     const travelerNumber = Number(numberOfTravelers.value)
     const numberDays = Number(numberOfDays.value)
     const chooseDate1 = departureDate.value.replace('-', '/')
     const chooseDate = chooseDate1.replace('-', '/')
-    if (!destinationName || !travelerNumber || !numberDays || !chooseDate) {
-        inputErrorMessage.classList.remove('hidden')
-     } else {
-         inputErrorMessage.classList.add('hidden')
-    }
+
     let destinationIdentifier;
     const destinationInfo = destinationData.filter(destination => {
         if (destination.destination === destinationName) {
             destinationIdentifier = destination.id
         }
     })
+   
     const postObj = {
-        id: Date.now(), userID: Number(traveler.id), destinationID: Number(destinationIdentifier), travelers: Number(travelerNumber), date: chooseDate, duration: numberDays, status: 'pending', suggestedActivities: []}
-    postTripApi(postObj)
-    .then(response => { 
-        if (!response.ok) {
-            throw new Error('Please complete the form')
-        } else {
-            return response.json()
-        }
-    })
-    .then(data => getAllData())
-    .catch(err => console.log(err))       
+        id: Date.now(), userID: Number(traveler.id), destinationID: Number(destinationIdentifier), travelers: Number(travelerNumber), date: chooseDate, duration: numberDays, status: 'Pending', suggestedActivities: []}
+
+    if (!destinationName || !travelerNumber || !numberDays || !chooseDate) {
+        inputErrorMessage.classList.remove('hidden')
+     } else {
+         postTripApi(postObj)
+         .then(response => { 
+             if (!response.ok) {
+                 throw new Error('Please complete the form')
+             } else {
+                 return response.json()
+             }
+         })
+         .then(data => getAllData())
+         .catch(err => console.log(err))
+         clearBookingInput()
+         inputErrorMessage.classList.add('hidden')
+    }
+}
+
+const clearBookingInput = () => {
+    destinationOptions.value = ''
+    numberOfTravelers.value = ''
+    numberOfDays.value = ''
+    departureDate.value = ''
+    tripEstimateContainer.classList.add('hidden')
 }
 
 const displayTravelerName = () => {
@@ -167,13 +161,3 @@ const renderTrips = () => {
 
     })
 }
-
-
-
-// function hide(element) {
-//     element.classList.add('hidden');
-//   };
-  
-//   function unhide(element) {
-//     element.classList.remove('hidden');
-//   };
