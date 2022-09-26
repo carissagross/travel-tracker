@@ -1,16 +1,5 @@
 # Journey (Travel Tracker)
 
-## Table of Contents
-- [Introduction](Introduction)
-- [Technologies](Technologies)
-- [Illustrations](Illustrations)
-- [Features](Features)
-- [Challenges](Challenges)
-- [Sources](Sources)
-- [Challenges](Challenges)
-- [Set-Up](Set-Up)
-
-
 ## Introduction
 - Travel Tracker is the final solo project for Mod 2 of Turing School of Software & Design. This project focused on using Test Driven Development and Object Oriented Programming to build an interactive travel site where users can log in to view their trips and book a new trip. The Fetch API was used to retrieve and post data. Specifications for this project can be found link [here](https://frontend.turing.edu/projects/travel-tracker.html).
 
