@@ -218,9 +218,21 @@ h5 {
   width: 20%;
 }
 
-.trip-estimate {
+.trip-estimate-container,
+.input-error-container {
+  display: flex;
+  justify-content: center;
   width: 160%;
+}
 
+.trip-estimate {
+  text-align: center;
+}
+
+.input-error-message {
+  color: red;
+  text-align: center;
+  font-size: 2vh; 
 }
 
 .destination {
@@ -239,10 +251,6 @@ h5 {
   color: #415651;
   font-family: 'Merriweather';
   font-size: 80%;
-}
-
-.trip-estimate-container {
-  width: 15%;
 }
 
 .select-destination-container {
@@ -277,35 +285,35 @@ p {
   line-height: 25px;
   }
 
-  .your-trips-title-container {
-    color: #415651;
-    display: flex;
-    height: 3%;
-    justify-content: center;
-    margin-bottom: 2%;
-    text-align: center;
-    width: 100%;
-  }
+.your-trips-title-container {
+  color: #415651;
+  display: flex;
+  height: 3%;
+  justify-content: center;
+  margin-bottom: 2%;
+  text-align: center;
+  width: 100%;
+}
 
-  .your-trips {
-    align-content: center;
-    align-items: center;
-    color: #415651;
-    font-weight: 800;
-    font-family: 'Raleway', sans-serif;
-    height: 10%;
-    margin-top: 1%;
-  }
+.your-trips {
+  align-content: center;
+  align-items: center;
+  color: #415651;
+  font-weight: 800;
+  font-family: 'Raleway', sans-serif;
+  height: 10%;
+  margin-top: 1%;
+}
 
-  .all-trips-container-section {
-    display: flex;
-    height: 70%;
-    flex-direction: column;
-    margin-bottom: 4%;
-    padding-bottom: 3%;
-    padding-top: 2%;
-    width: 90%;
-  }
+.all-trips-container-section {
+  display: flex;
+  height: 70%;
+  flex-direction: column;
+  margin-bottom: 4%;
+  padding-bottom: 3%;
+  padding-top: 2%;
+  width: 90%;
+}
 
 .trip-card-container {
   display: flex;

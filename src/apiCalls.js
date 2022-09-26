@@ -13,4 +13,12 @@ const getTripsApi = fetch('http://localhost:3001/api/v1/trips')
 .then(data => (data))
 .catch(err => console.log(err))
 
-export { getTravelersApi, getDestinationsApi, getTripsApi }
+const postTripApi = (postObj) => {
+return fetch('http://localhost:3001/api/v1/trips', {
+        method:'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(postObj)
+    })
+}
+
+export { getTravelersApi, getDestinationsApi, getTripsApi, postTripApi}

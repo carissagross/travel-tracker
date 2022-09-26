@@ -27,7 +27,6 @@ class Traveler {
         let findTripCost = this.allTrips.reduce((acc, trip) => {
                 if (trip.destination === name) {
                     lodgingCost = duration * trip.estimatedLodgingCostPerDay
-                    console.log('LODGING', lodgingCost, flightCost)
                     flightCost = travelers * trip.estimatedFlightCostPerPerson
                 }
             acc = (lodgingCost + flightCost) * 1.1

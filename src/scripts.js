@@ -7,8 +7,7 @@ import Destination from './Destination'
 import Trip from './Trip'
 import TripsRepo from './TripsRepo';
 
-import { getTravelersApi, getDestinationsApi, getTripsApi } from './apiCalls'
-
+import { getTravelersApi, getDestinationsApi, getTripsApi, postTripApi } from './apiCalls'
 
 // GLOBAL VARIALBES //
 let travelerData;
@@ -26,12 +25,11 @@ const getAllData = () => {
         destinationData = data[1].destinations
         tripData = data[2].trips
         allTrips = new TripsRepo(tripData, destinationData)
-        traveler = new Traveler(travelerData[Math.floor(Math.random() * travelerData.length)], allTrips)
+        traveler = new Traveler(travelerData[30], allTrips)
         populateDashboard()
         //pass in id for single customer from login
     })
 }
-// POST API DATA //
 
 // QUERY SELECTORS //
 const loginPage = document.querySelector('.login-page')
@@ -50,17 +48,19 @@ const viewEstimateButton = document.querySelector('.view-estimate-button')
 const bookTripButton = document.querySelector('.book-trip-button')
 const tripEstimate = document.querySelector('.trip-estimate')
 const tripEstimateContainer = document.querySelector('.trip-estimate-container')
+const inputErrorMessage = document.querySelector('.input-error-container')
+// const errorMessage = document.querySelector('.input-error-message')
 
 // EVENT LISTENERS //
 window.addEventListener('load', getAllData())
 viewEstimateButton.addEventListener('click', function() {
     viewEstimate()
 })
+bookTripButton.addEventListener('click', function() {
+    bookTrip()
+})
 
-
-
-
-// HELPER FUNCTIONS //
+// HANDLER FUNCTIONS //
 const populateDashboard = () => {
     displayTravelerName()
     displayTotalAmountSpent()
@@ -75,9 +75,45 @@ const viewEstimate = () => {
    const numberDays = Number(numberOfDays.value)
    const chooseDate = departureDate.value
    const tripCost = traveler.calculateTripCost(destinationName, travelerNumber, numberDays)
+   
+   if (!destinationName || !travelerNumber || !numberDays || !chooseDate) {
+       inputErrorMessage.classList.remove('hidden')
+    } else {
+        inputErrorMessage.classList.add('hidden')
+        tripEstimateContainer.classList.remove('hidden')
+        tripEstimate.innerText = `Trip Estimate: $${tripCost.toFixed(2)}`   
+   }
+}
 
-   tripEstimateContainer.classList.remove('hidden')
-   tripEstimate.innerText = `Trip Estimate: $${tripCost.toFixed(2)}`
+const bookTrip = () => {
+    const destinationName = destinationOptions.value
+    const travelerNumber = Number(numberOfTravelers.value)
+    const numberDays = Number(numberOfDays.value)
+    const chooseDate1 = departureDate.value.replace('-', '/')
+    const chooseDate = chooseDate1.replace('-', '/')
+    if (!destinationName || !travelerNumber || !numberDays || !chooseDate) {
+        inputErrorMessage.classList.remove('hidden')
+     } else {
+         inputErrorMessage.classList.add('hidden')
+    }
+    let destinationIdentifier;
+    const destinationInfo = destinationData.filter(destination => {
+        if (destination.destination === destinationName) {
+            destinationIdentifier = destination.id
+        }
+    })
+    const postObj = {
+        id: Date.now(), userID: Number(traveler.id), destinationID: Number(destinationIdentifier), travelers: Number(travelerNumber), date: chooseDate, duration: numberDays, status: 'pending', suggestedActivities: []}
+    postTripApi(postObj)
+    .then(response => { 
+        if (!response.ok) {
+            throw new Error('Please complete the form')
+        } else {
+            return response.json()
+        }
+    })
+    .then(data => getAllData())
+    .catch(err => console.log(err))       
 }
 
 const displayTravelerName = () => {
@@ -113,14 +149,6 @@ const renderTrips = () => {
 
     })
 }
-
-// OTHER FUNCTIONS //
-// const clearBookingForm = () => {
-//     numberOfDays.value = ''
-//     numberOfTravelers.value = ''
-//     departureDate.value = ''
-//     destinationOptions.value = ''
-// }
 
 
 
