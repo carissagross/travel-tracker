@@ -32,6 +32,7 @@ const getAllData = () => {
 }
 
 // QUERY SELECTORS //
+const dashboardPage = document.querySelector('.travel-dashboard-page')
 const loginPage = document.querySelector('.login-page')
 const userName = document.querySelector('.username')
 const password = document.querySelector('.password')
@@ -59,6 +60,8 @@ viewEstimateButton.addEventListener('click', function() {
 bookTripButton.addEventListener('click', function() {
     bookTrip()
 })
+logoutButton.addEventListener('click', travelerLogout)
+signInButton.addEventListener('click', travelerSignIn)
 
 // HANDLER FUNCTIONS //
 const populateDashboard = () => {
@@ -83,6 +86,21 @@ const viewEstimate = () => {
         tripEstimateContainer.classList.remove('hidden')
         tripEstimate.innerText = `Trip Estimate: $${tripCost.toFixed(2)}`   
    }
+}
+
+// const travelerSignIn = () => {
+//     const travelerUserName = userName.value
+//     const travelerPassword = password.value
+
+//     if (travelerUserName)
+
+//     dashboardPage.classList.remove('hidden')
+//     loginPage.classList.add('hidden')
+// }
+
+const travelerLogout = () => {
+    dashboardPage.classList.add('hidden')
+    loginPage.classList.remove('hidden')
 }
 
 const bookTrip = () => {

@@ -1,22 +1,22 @@
 import { expect } from 'chai';
 import Traveler from '../src/Traveler';
-import Trip from '../src/Trip';
+// import Trip from '../src/Trip';
 // import Destination from '../src/Destination';
 import TripsRepo from '../src/TripsRepo'
 
 describe('Traveler', () => {
-  let travelerData;
-  let tripsRepo;
-  let traveler1;
-  let traveler2;
-  let tripData;
-  let trip1;
-  let trip2;
-  let trip3;
-  let destinationData;
-  let destination1;
-  let destination2;
-  let destination3;
+  let travelerData
+  let tripsRepo
+  let traveler1
+  let traveler2
+  let tripData
+  // let trip1
+  // let trip2
+  // let trip3
+  let destinationData
+  // let destination1
+  // let destination2
+  // let destination3
 
   beforeEach(() => {
     travelerData = [
@@ -30,7 +30,7 @@ describe('Traveler', () => {
           "name": "Rachael Vaughten",
           "travelerType": "thrill-seeker",
         }
-      ];
+      ]
 
     
       tripData = [
@@ -74,7 +74,7 @@ describe('Traveler', () => {
           status: "approved",
           suggestedActivities: [ ]
           }
-        ];
+        ]
        
         destinationData = [
           {
@@ -114,8 +114,8 @@ describe('Traveler', () => {
         // trip3 = new Trip(tripData[2]);
 
         tripsRepo = new TripsRepo(tripData, destinationData)
-        traveler1 = new Traveler(travelerData[0], tripsRepo);
-        traveler2 = new Traveler(travelerData[1], tripsRepo);
+        traveler1 = new Traveler(travelerData[0], tripsRepo)
+        traveler2 = new Traveler(travelerData[1], tripsRepo)
 
         // destination1 = new Destination(destinationData[0])
         // destination2 = new Destination(destinationData[1])
@@ -151,18 +151,29 @@ describe('Traveler', () => {
     expect(traveler2.returnTravelerFirstName()). to.equal('Rachael')
   });
 
-  it('should find all user trips', () => {
+  it.only('should find all user trips', () => {
     traveler1.findMyTrips();
     expect(traveler1.myTrips).to.deep.equal([{
-      id: 117,
-      userID: 1,
-      destinationID: 28,
-      travelers: 3,
+      alt: "white and brown concrete buildings near sea under white clouds during daytime",
+      currentDate: 1664202967666,
       date: "2021/01/09",
+      destination: "San Juan, Puerto Rico",
+      destinationID: 28,
+      destinationId: 28,
       duration: 15,
-      status: "approved",
-      suggestedActivities: [ ]
-    }]);
+      estimatedFlightCostPerPerson: 900,
+      estimatedLodgingCostPerDay: 70,
+      id: 117,
+      image: "https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80",
+      initialStatus: "approved",
+      status: [undefined],
+      suggestedActivities: [],
+      timeStamp: 1610175600000,
+      travelers: 3,
+      userID: 1
+      }
+    ]
+   );
     expect(traveler2.findMyTrips(tripData)).to.deep.equal([{
       id: 89,
       userID: 2,

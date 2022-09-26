@@ -23,7 +23,7 @@ body {
 
 .journey-container {
   align-items: center;
-  background: hsl(0deg 0% 85% / 80%);
+  background: hsl(0deg 0% 100% / 80%);
   display: flex;
   height: 30%;
   justify-content: center;
@@ -195,7 +195,6 @@ h5 {
 .filter-and-display-container {
   align-items: center;
   background-image: url("/Users/carissagross/turing/mod2/projects/travel-tracker/src/images/DSC04153.png");
-  background-color: rgb(41, 194, 233);
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;

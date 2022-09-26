@@ -18,10 +18,6 @@ class Trip {
         this.image = destination.image
         this.alt = destination.alt
     }
-    // method to filter status
-    // only change the status IF the date is past
-    // if date is past === status is 'Past Trips'
-    // if date is greater than current date, then status ==== status
 
     findPastTrips() {
         if (this.timeStamp <= this.currentDate) {
@@ -31,8 +27,4 @@ class Trip {
         }
     }
 }
-
-
-
-
 export default Trip;
