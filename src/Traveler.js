@@ -13,51 +13,37 @@ class Traveler {
     }
 
     findMyTrips() {
-        // console.log("THIS TIHNG", this.allTrips)
-        const findTrips = this.allTrips.filter(trip => trip.userID === this.id);
-        this.myTrips = findTrips
+        const findTrips = this.allTrips.filter(trip => trip.userID === this.id)
+        const sortTrips = findTrips.sort((a, b) => {
+            return b.timeStamp - a.timeStamp
+        })
+        this.myTrips = sortTrips
     }
 
-    calculateTripCost(tripData, destinationData) {
-        const trips = this.findMyTrips(tripData)
+    calculateTripCost(name, travelers, duration) {
         let lodgingCost;
         let flightCost;
 
-        let findTripCost = trips.reduce((acc, trip) => {
-            destinationData.forEach(destination => {
-                if (trip.destinationID === destination.id) {
-                    lodgingCost = trip.duration * destination.estimatedLodgingCostPerDay
-                    flightCost = trip.travelers * destination.estimatedFlightCostPerPerson
+        let findTripCost = this.allTrips.reduce((acc, trip) => {
+                if (trip.destination === name) {
+                    lodgingCost = duration * trip.estimatedLodgingCostPerDay
+                    console.log('LODGING', lodgingCost, flightCost)
+                    flightCost = travelers * trip.estimatedFlightCostPerPerson
                 }
-            })
             acc = (lodgingCost + flightCost) * 1.1
             return acc
         }, 0)
         return findTripCost
     }
-
- 
-
-    // findPendingTrips(tripData) {
-    //     const trips = this.findMyTrips(tripData)
-    //     const pendingTrips = trips.filter(trip => {
-    //         return trip.status === 'pending'
-    //     })
-    //     return pendingTrips
-    // }
     
     calculateSpentOnTripsForYear(destinationData) {
         this.findMyTrips()
         let lodgingCost;
         let flightCost;
-        // console.log("MY TRIPS", this.myTrips)
         const currentYear = (new Date()).getFullYear().toString();
-        // console.log("CURRENT YEAR", currentYear)
         const findTripsThisYear = this.myTrips.filter(trip => trip.date.includes(currentYear) && trip.initialStatus === 'approved')
-        // console.log("1", findTripsThisYear)
 
         const yearlyTripCost = findTripsThisYear.reduce((acc, trip) => {
-            // console.log("INSIDE REDUCE",trip)
             destinationData.forEach(destination => {
                 if (trip.destinationID === destination.id) {
                     lodgingCost = trip.duration * destination.estimatedLodgingCostPerDay
@@ -68,10 +54,6 @@ class Traveler {
             return acc
         }, 0)
         return yearlyTripCost
-
-    // getFullYear() method returns the year of the specified date according to local time.
-    // new Date() can create a Date instance or return a string representing the current time.
-    // toString() method returns a string representing the object.
     }
 }
 export default Traveler;

@@ -9,9 +9,7 @@ class TripsRepo {
     }
 
     updateTripDetails() {
-        // const trips = this.findMyTrips(tripData)
         let tripDetails = this.allTrips.reduce((acc, trip) => {
-            // console.log('TRIP', trip)
             this.allDestinations.forEach(destination => {
                 if (trip.destinationID === destination.id) {
                     acc.push(new Trip(destination, trip))
@@ -19,7 +17,6 @@ class TripsRepo {
             })
             return acc
         }, [])
-        console.log("NEW THINGY",tripDetails)
         return tripDetails
     }
 
