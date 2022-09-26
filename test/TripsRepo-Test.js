@@ -94,4 +94,23 @@ describe('TripsRepo', () => {
         trip2 = tripsRepo.allTripsMaster[1]
     })
 
+    it('should be a function', () => {
+        expect(TripsRepo).to.be.a('function')
+    })
+
+    it('should be an instance of Trip Repo', () => {
+        expect(tripsRepo).to.be.an.instanceOf(TripsRepo)
+    })
+
+    it('should contain all trips', () => {
+        expect(tripsRepo.allTrips.length).to.equal(4)
+    })
+
+    it('should contain all destinations', () => {
+        expect(tripsRepo.allDestinations.length).to.equal(4)
+    })
+
+    it('should update trip details', () => {
+        expect(tripsRepo.allTripsMaster.length).to.equal(4)
+    })
 })
