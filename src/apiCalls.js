@@ -4,14 +4,14 @@ return fetch('http://localhost:3001/api/v1/travelers')
 }
 
 const getCurrentTravelerApi = (id) => {
-    return fetch(`http://localhost:3001/api/v1/travelers/${id}`)
-    .then(response => response.json())
-    }
+return fetch(`http://localhost:3001/api/v1/travelers/${id}`)
+.then(response => response.json())
+}
 
 const getDestinationsApi = () => {
 return fetch('http://localhost:3001/api/v1/destinations')
 .then(response => response.json())
-.catch(err => console.log(err))
+.catch(err => window.alert(err))
 }
 
 const getTripsApi = () => {
@@ -32,4 +32,4 @@ const sendAllData = (id) => {
     return Promise.all([getTravelersApi(), getDestinationsApi(), getTripsApi(), getCurrentTravelerApi(id)])
 }
 
-export { sendAllData, postTripApi }
+export { getTravelersApi, sendAllData, postTripApi }

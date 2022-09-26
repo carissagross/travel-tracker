@@ -4,7 +4,7 @@ import './css/styles.css';
 import Traveler from './Traveler'
 import TripsRepo from './TripsRepo';
 
-import { sendAllData, postTripApi } from './apiCalls'
+import { getTravelersApi, sendAllData, postTripApi } from './apiCalls'
 
 // GLOBAL VARIALBES //
 let travelerData;
@@ -14,12 +14,12 @@ let traveler;
 let destinations;
 let allTrips;
 let trips;
+let allTravelers
 
 // PROMISE //
-const getAllData = () => {
-    sendAllData(10)
+const getAllData = (id) => {
+    sendAllData(id)
     .then((data) => {
-        console.log(data)
         travelerData = data[0].travelers
         destinationData = data[1].destinations
         tripData = data[2].trips
@@ -31,9 +31,10 @@ const getAllData = () => {
 
 // QUERY SELECTORS //
 const dashboardPage = document.querySelector('.travel-dashboard-page')
+const loginError = document.querySelector('.login-error-container')
 const loginPage = document.querySelector('.login-page')
-const userName = document.querySelector('.username')
-const password = document.querySelector('.password')
+const userName = document.querySelector('.username-input')
+const password = document.querySelector('.password-input')
 const signInButton = document.querySelector('.sign-in-button')
 const logoutButton = document.querySelector('.logout-button')
 const userNameDisplay = document.querySelector('.welcome')
@@ -50,12 +51,21 @@ const tripEstimateContainer = document.querySelector('.trip-estimate-container')
 const inputErrorMessage = document.querySelector('.input-error-container')
 
 // EVENT LISTENERS //
-window.addEventListener('load', getAllData())
+// window.addEventListener('load', getAllData())
+window.onload = () => loadWindow()
+signInButton.addEventListener('click', function() {
+    loadTravelerDashboard()
+})
+
 viewEstimateButton.addEventListener('click', function() {
     viewEstimate()
 })
 bookTripButton.addEventListener('click', function() {
     bookTrip()
+})
+
+logoutButton.addEventListener('click', function() {
+    logout()
 })
 
 // HANDLER FUNCTIONS //
@@ -67,6 +77,50 @@ const populateDashboard = () => {
 }
 
 // DOM MANIPULATION //
+const loadTravelerDashboard= () => {
+    const travelerUsername = userName.value
+    const travelerPassword = password.value
+
+    const userID = Number(travelerUsername.replace('traveler', ''))
+
+    if (travelerUsername && travelerPassword) {
+        loginValidation(userID, travelerUsername, travelerPassword)
+    } else {
+        loginError.classList.remove('hidden')
+    }
+}
+
+const loginValidation = (userID, travelerUsername, travelerPassword) => {
+    const masterPassword = 'travel'
+
+    let validation = allTravelers.reduce((acc, traveler) => {
+        console.log(userID, traveler.id, travelerPassword, masterPassword)
+        if (userID === traveler.id && travelerPassword === masterPassword) {
+            console.log('poop')
+            acc.push(traveler)  
+        }
+        // console.log(acc)
+        return acc
+    }, [])
+
+    if (validation.length === 1) {
+        getAllData(userID)
+        dashboardPage.classList.remove('hidden')
+        loginPage.classList.add('hidden')
+    } else {
+        loginError.classList.remove('hidden')
+    }
+}
+
+const loadWindow = () => {
+getTravelersApi()
+.then(data => { allTravelers = data.travelers })
+}
+
+const logout = () => {
+    location.reload()
+}
+
 const viewEstimate = () => {
    const destinationName = destinationOptions.value
    const travelerNumber = Number(numberOfTravelers.value)
@@ -111,11 +165,16 @@ const bookTrip = () => {
                  return response.json()
              }
          })
-         .then(data => getAllData())
+         .then(data => getAllData(traveler.id))
          .catch(err => console.log(err))
          clearBookingInput()
          inputErrorMessage.classList.add('hidden')
     }
+}
+
+const clearLoginInput = () => {
+    userName.value = ''
+    password.value = ''
 }
 
 const clearBookingInput = () => {
@@ -156,6 +215,5 @@ const renderTrips = () => {
                 <p class="trip-duration">Trip Duration: ${trip.duration}</p>
                 <p class="trip-travelers">Travelers: ${trip.travelers}</p>
             </div>`
-
     })
 }

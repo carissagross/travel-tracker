@@ -93,6 +93,21 @@ h5 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.login-error-container {
+  margin-top: 2%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.login-error-message {
+  font-size: larger;
+  font-family: 'Raleway', sans-serif;
+  color: rgb(142, 60, 60);
+}
+
 .date, .number-of-travelers, .number-of-days {
   height: 20%;
   width: 70%;
