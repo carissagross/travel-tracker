@@ -1,14 +1,14 @@
 import { expect } from 'chai';
 import Trip from '../src/Trip';
-import Traveler from '../src/Traveler';
+import TripsRepo from '../src/TripsRepo'
 
 describe('Trip', () => {
-    let tripData;
+    let tripData
     let destinationData
-    let trip1;
-    let trip2;
-    let trip3;
-
+    let tripsRepo
+    let trip1
+    let trip2
+ 
     beforeEach (() => {
         tripData = [
             {
@@ -88,11 +88,10 @@ describe('Trip', () => {
             alt: "city during the day time with eiffel tower"
             },
         ]
-          
-         
-          trip1 = new Trip(tripData[0]);
-          trip2 = new Trip(tripData[1]);
-          trip3 = new Trip(tripData[2]);
+
+        tripsRepo = new TripsRepo(tripData, destinationData)
+        trip1 = tripsRepo.allTripsMaster[0]
+        trip2 = tripsRepo.allTripsMaster[1]
     })
 
     it('should be a function', () => {
@@ -146,10 +145,9 @@ describe('Trip', () => {
     
     it('should have a time stamp', () => {
         expect(trip1.timeStamp).to.equal()
-        expect(trip2.suggestedActivities).to.deep.equal([])
     })
 
     it('should determine the status of each trip', () => {
-        expect(trip1.findPastTrips(tripData)).to.equal('approved')
+        expect(trip1.findPastTrips()).to.equal('approved')
     })
-});
+})

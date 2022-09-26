@@ -25,9 +25,9 @@ const getAllData = () => {
         destinationData = data[1].destinations
         tripData = data[2].trips
         allTrips = new TripsRepo(tripData, destinationData)
-        traveler = new Traveler(travelerData[30], allTrips)
+        traveler = new Traveler(travelerData[28], allTrips)
         populateDashboard()
-        //pass in id for single customer from login
+        //pass in id for single customer from login currentTraveler
     })
 }
 
@@ -41,7 +41,7 @@ const logoutButton = document.querySelector('.logout-button')
 const userNameDisplay = document.querySelector('.welcome')
 const totalSpent = document.querySelector('.total-spent')
 const tripCardContainer = document.querySelector('.trip-card-container')
-const departureDate = document.getElementById('select-date-calendar')
+const departureDate = document.getElementById('calendar')
 const numberOfTravelers = document.getElementById('number-of-travelers')
 const numberOfDays = document.getElementById('number-of-days')
 const destinationOptions = document.querySelector('.dropdown-destination-input')
@@ -60,8 +60,8 @@ viewEstimateButton.addEventListener('click', function() {
 bookTripButton.addEventListener('click', function() {
     bookTrip()
 })
-logoutButton.addEventListener('click', travelerLogout)
-signInButton.addEventListener('click', travelerSignIn)
+// logoutButton.addEventListener('click', travelerLogout)
+// signInButton.addEventListener('click', travelerSignIn)
 
 // HANDLER FUNCTIONS //
 const populateDashboard = () => {
@@ -98,10 +98,10 @@ const viewEstimate = () => {
 //     loginPage.classList.add('hidden')
 // }
 
-const travelerLogout = () => {
-    dashboardPage.classList.add('hidden')
-    loginPage.classList.remove('hidden')
-}
+// const travelerLogout = () => {
+//     dashboardPage.classList.add('hidden')
+//     loginPage.classList.remove('hidden')
+// }
 
 const bookTrip = () => {
     const destinationName = destinationOptions.value
@@ -160,7 +160,7 @@ const renderTrips = () => {
               <div class="trip-details">
                 <p class="location-name"> ${trip.destination}</p>
                 <p class="trip-date">Trip Date: ${trip.date}</p>
-                <p class="status">Status: ${trip.initialStatus}</p>
+                <p class="status">Status: ${trip.status}</p>
                 <p class="trip-duration">Trip Duration: ${trip.duration}</p>
                 <p class="trip-travelers">Travelers: ${trip.travelers}</p>
             </div>`
