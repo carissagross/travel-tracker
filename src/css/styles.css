@@ -1,21 +1,20 @@
 * {
   margin: 0;
-  padding:0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
+  display: flex;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
  }
 
-/* body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-} */
-
 .login-page {
-  background-image: url("/Users/carissagross/turing/mod2/projects/overlook-hotel/src/images/Home-Page-Image.png");
+  background-image: url("/Users/carissagross/turing/mod2/projects/travel-tracker/src/images/Home-Page-Image.png");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100%;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -24,11 +23,12 @@ body {
 
 .journey-container {
   align-items: center;
-  background: rgba(217, 217, 217, 0.8);
+  background: hsl(0deg 0% 100% / 80%);
   display: flex;
-  height: 25%;
+  height: 30%;
   justify-content: center;
   width: 100%;
+  flex-direction: column;
 }
 
 h1 {
@@ -47,76 +47,86 @@ h5 {
   font-style: italic;
   font-weight: 400;
   justify-content: center;
+  padding-bottom: 2%;
 }
 
 .sign-in-container {
-  align-items: center;
+  margin-top: 5%;
+  height: 70%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  height: 75%;
-  margin-top: 5%;
-  width: 100%;
-}
-
-/* .username, .password, .sign-in-button {
-  display: flex;
-  line-height: 25px;
-  font-family: 'Merriweather';
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  justify-content: center;
-  margin-bottom: 10px;
-  margin-top: 20px;
-} */
-
-
-.username, .password, .sign-in-button {
-  display: flex;
-  line-height: 25px;
-  font-family: 'Merriweather';
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  justify-content: center;
-  margin-bottom: 10px;
-  margin-top: 20px;
-}
-
-.username-input, .password-input, .date, .number-of-travelers, .number-of-days {
-  height: 24px;
-  width: 340px;
+  flex-wrap: nowrap;
 }
 
 .username-label, .password-label {
   margin-bottom: 20px;
 }
 
-.sign-in-button {
+.username-container, .password-container {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+.username, .password {
+  display: flex;
+  line-height: 25px;
+  font-family: 'Merriweather';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.username-input, .password-input {
+  height: 30px;
+  width: 200px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bolder;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.date, .number-of-travelers, .number-of-days {
+  height: 20%;
+  width: 70%;
+}
+
+.sign-in-button-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin-top: 20px;
+  justify-content: space-around;
+  flex-direction: row;
+  align-content: flex-end;
+}
+
+.sign-in-button {
   background: #415651;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: white;
   font-family: 'Raleway', sans-serif;
   font-size: 80%;
   height: 38.76px;
-  margin-top: 10px;
-  margin-left: 95px;
   text-align: center;
   width: 152.06px;
 }
 
 .travel-dashboard-page {
   align-items: center;
-  background-image: url("/Users/carissagross/turing/mod2/projects/overlook-hotel/src/images/DSC04153.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  height: 100%;
+  height: 100vh;
   justify-content: flex-start;
-  width: 100%;
+  width: 100vw;
 }
 
 .traveler-welcome-container {
@@ -126,12 +136,13 @@ h5 {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 20%;
+  height: 18%;
   justify-content: space-around;
   width: 100%;
 }
 
 .traveler-welcome {
+  margin-left: 2%;
   width: 33%;
 }
 
@@ -141,9 +152,8 @@ h5 {
   font-size: 200%;
   font-style: normal;
   font-weight: 400;
-  margin-bottom: 2%;
   margin-left: 3%;
-  margin-top: 2%;
+  padding-top: 5%;
 }
 
 .travel-bookings-container {
@@ -156,19 +166,19 @@ h5 {
 .total-spent {
   color: #415651;
   font-family: 'Merriweather';
-  font-size: 120%;
+  font-size: 100%;
   font-style: normal;
   font-weight: 600;
   line-height: 25px;
   margin-bottom: 1%;
-  margin-left: 8%;
+  margin-left: 2%;
 }
 
-.button-container {
+.logout-button-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   height: 100%;
+  justify-content: space-around;
   width: 20%;
 }
 
@@ -182,78 +192,114 @@ h5 {
   width: 55%;
 }
 
+.filter-and-display-container {
+  align-items: center;
+  background-image: url("/Users/carissagross/turing/mod2/projects/travel-tracker/src/images/DSC04153.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  height: 80%;
+  width: 100%;
+}
+
 .book-trip-container {
   align-content: center;
   align-items: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 0px 4px 4px rgb(0 0 0 / 25%);
+  background: hsl(0deg 0% 100% / 80%);
   display: flex;
-  height: 38%;
+  height: 50%;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: center;
-  margin-top: 5%;
-  width: 65%;
+  justify-content: space-around;
+  margin-top: 1%;
+  padding-bottom: 1%;
+  width: 50%;
 }
 
-.book-trip-title-container, .your-trips-title-container {
-  display: flex;
-  width: 20%;
-  height: 20%;
-  flex-direction: column;
+.book-trip-title-container {
   align-content: center;
   align-items: center;
+  color: #415651;
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+  height: 20%;
+  margin-bottom: 1%;
+  width: 100%;
+}
+
+.book-a-trip {
+  align-content: center;
+  align-items: center;
+  color: #415651;
+  font-weight: 800;
+  font-family: 'Raleway', sans-serif;
+  height: 20%;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  width: 20%;
+}
+
+.trip-estimate-container,
+.input-error-container {
+  display: flex;
+  justify-content: center;
+  width: 160%;
+}
+
+.trip-estimate {
+  text-align: center;
+}
+
+.input-error-message {
+  color: red;
+  text-align: center;
+  font-size: 2vh; 
+}
+
+.destination {
+  margin-right: 2px;
+}
+
+.dropdown-destination-input {
+  width: 40%;
 }
 
 .book-trip-button-container {
   display: flex;
 }
 
-.select-date, .number-of-travelers, .number-of-days, .destination {
+.select-date, .number-of-travelers, .number-of-days, .destination, .trip-estimate {
   color: #415651;
   font-family: 'Merriweather';
-  font-size: 90%;
+  font-size: 80%;
 }
 
 .select-destination-container {
   display: flex;
-  width: 40%;
+  width: 30%;
 }
 
 .dropdown-destination-input {
-  width: 140%;
-}
-
-.view-estimate, .book-trip {
-    align-items: center;
-    background: #415651;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: white;
-    font-family: 'Raleway', sans-serif;
-    font-size: 80%;
-    height: 38.76px;
-    margin-top: 6%;
-    margin-left: 5%;
-    text-align: center;
-    width: 152.06px;
-}
-
-
-
-
-
-.your-trips-container {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background: rgba(255, 255, 255, 0.8);
-  height: 38%;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  margin-top: 5%;
   width: 80%;
+}
+
+.book-trip-button, .view-estimate-button {
+  align-items: center;
+  background: #415651;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 80%;
+  height: 33px;
+  margin-top: 2%;
+  margin-left: 5%;
+  text-align: center;
+  width: 152.06px;
 }
 
 p {
@@ -263,31 +309,100 @@ p {
   font-style: normal;
   font-weight: 600;
   line-height: 25px;
-  margin-bottom: 3%;
-  margin-left: 8%;
   }
 
-  .your-trips-title-container {
-    display: flex;
-    height: 20%;
-    width: 20%;
-  }
-
-  .your-trips-cards-container {
-    align-content: center;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-    display: grid;
-    gap: 5px;
-    grid-template: 1fr 1fr/ 1fr 1fr;
-    height: 25%;
-    justify-content: center;
-    justify-items: center;
-    margin-top: 6%;
-    width: 60%;
+.your-trips-title-container {
+  color: #415651;
+  display: flex;
+  height: 3%;
+  justify-content: center;
+  margin-bottom: 2%;
+  text-align: center;
+  width: 100%;
 }
 
+.your-trips {
+  align-content: center;
+  align-items: center;
+  color: #415651;
+  font-weight: 800;
+  font-family: 'Raleway', sans-serif;
+  height: 10%;
+  margin-top: 1%;
+}
+
+.all-trips-container-section {
+  display: flex;
+  height: 70%;
+  flex-direction: column;
+  margin-bottom: 4%;
+  padding-bottom: 3%;
+  padding-top: 2%;
+  width: 90%;
+}
+
+.trip-card-container {
+  display: flex;
+  height: 80%;
+  overflow: scroll;
+  overflow-x: hidden;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.trip-card {
+  align-content: center;
+  align-items: center;
+  background-color: rgb(193, 193, 193);
+  border-color: rgb(48, 48, 48);
+  border-style: dotted;
+  border-radius: 5px;  
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 300px;
+  justify-content: center;
+  margin-top: 2%;
+  margin: 1%;
+  padding-top: 5px;
+  width: 250px;
+}
+
+.destination-image {
+  border-radius: 5px;
+  height: 120px;
+  margin-top: 2%;
+  width: 215px;
+}
+
+.trip-details {
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  padding-bottom: 20px;
+  width: 85%;
+}
+
+.location-name {
+  color: #415651;
+  font-family: 'Raleway';
+  font-size: 100%;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.trip-date, .status, .trip-duration, .trip-travelers {
+  color: #415651;
+  display: block;
+  font-family: 'Merriweather';
+  font-size: 80%;
+  font-style: normal;
+  font-weight: 600;
+}
 
 .hidden {
   display: none;
