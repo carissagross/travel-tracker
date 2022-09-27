@@ -59,6 +59,7 @@ signInButton.addEventListener('click', function() {
 viewEstimateButton.addEventListener('click', function() {
     viewEstimate()
 })
+
 bookTripButton.addEventListener('click', function() {
     bookTrip()
 })
@@ -76,7 +77,7 @@ const populateDashboard = () => {
 }
 
 // DOM MANIPULATION //
-const loadTravelerDashboard= () => {
+const loadTravelerDashboard = () => {
     const travelerUsername = userName.value
     const travelerPassword = password.value
 
@@ -93,12 +94,9 @@ const loginValidation = (userID, travelerUsername, travelerPassword) => {
     const masterPassword = 'travel'
 
     let validation = allTravelers.reduce((acc, traveler) => {
-        console.log(userID, traveler.id, travelerPassword, masterPassword)
         if (userID === traveler.id && travelerPassword === masterPassword) {
-            console.log('poop')
             acc.push(traveler)  
         }
-        // console.log(acc)
         return acc
     }, [])
 
