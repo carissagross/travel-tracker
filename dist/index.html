@@ -10,7 +10,7 @@
   <title>Journey: Travel-Tracker</title>
 </head>
 <body>
-  <section class="login-page hidden">
+  <section class="login-page">
     <div class="journey-container">
       <h1>JOURNEY</h1>
       <h5>. . . it starts here</h5>
@@ -24,13 +24,16 @@
         <label class="password">Password:</label>
         <input class="password-input" type="password"></input>
       </div>
+      <div class="login-error-container hidden">
+        <p class="login-error-message">Username or Password is Incorrect</p>
+      </div>
       <div class="sign-in-button-container">
         <button class="sign-in-button">Sign-In</button>
       </div>
     </div>
   </section>
 
-  <section class="travel-dashboard-page">
+  <section class="travel-dashboard-page hidden">
     <div class="traveler-welcome-container">
       <div class="traveler-welcome">
         <h2 class="welcome">Welcome, Traveler</h2>
@@ -57,18 +60,18 @@
           
           <div class="select-date-container">
             <label class="select-date">Select Departure Date:</label>
-            <input type="date" id="select-date-calendar" name="calendar">
+            <input type="date" id="calendar" name="calendar" aria-label="Select Date">
           </div>
         </div>
   
         <div class="number-of-travelers-container">
           <label class="number-of-travelers">Number of Travelers:</label>
-          <input type="number-of-travelers" id="number-of-travelers" name="quantity" min="1" max="20">
+          <input type="number" id="number-of-travelers" name="quantity" min="1" max="20" aria-label="Enter Number of Travelers">
         </div>
   
         <div class="number-of-days-container">
           <label class="number-of-days">Number of Days:</label>
-          <input type="number-of-days" id="number-of-days" name="day-quantity">
+          <input type="number" id="number-of-days" name="day-quantity" aria-label="Enter Number of Days">
         </div>
   
         <div class="select-destination-container">

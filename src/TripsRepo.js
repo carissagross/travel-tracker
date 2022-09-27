@@ -1,5 +1,4 @@
 import Trip from '../src/Trip'
-// import Destination from '..src/Destination'
 
 class TripsRepo {
     constructor(trips, destinations) {
@@ -19,7 +18,5 @@ class TripsRepo {
         }, [])
         return tripDetails
     }
-
 }
-
 export default TripsRepo;

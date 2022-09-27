@@ -7,7 +7,6 @@ class Trip {
         this.travelers =  trip.travelers;
         this.date = trip.date;
         this.duration = trip.duration;
-        this.status = this.findPastTrips()
         this.suggestedActivities = trip.suggestedActivities;
         this.timeStamp = new Date(this.date).getTime()
         this.currentDate = new Date().getTime()
@@ -17,13 +16,14 @@ class Trip {
         this.estimatedFlightCostPerPerson = destination.estimatedFlightCostPerPerson
         this.image = destination.image
         this.alt = destination.alt
+        this.status = this.findPastTrips()
     }
 
     findPastTrips() {
         if (this.timeStamp <= this.currentDate) {
-            this.status = 'Past Trip' 
+            return 'Past Trip' 
         } else {
-            this.initialStatus
+           return this.initialStatus
         }
     }
 }

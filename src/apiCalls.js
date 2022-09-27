@@ -1,17 +1,26 @@
-const getTravelersApi = fetch('http://localhost:3001/api/v1/travelers')
+const getTravelersApi = () => {
+return fetch('http://localhost:3001/api/v1/travelers')
 .then(response => response.json())
-.then(data => (data))
-.catch(err => console.log(err))
+.catch(err => window.alert('Oops! We had a problem pulling your data.  Please refresh and try again!'))
+}
 
-const getDestinationsApi = fetch('http://localhost:3001/api/v1/destinations')
+const getCurrentTravelerApi = (id) => {
+return fetch(`http://localhost:3001/api/v1/travelers/${id}`)
 .then(response => response.json())
-.then(data => (data))
-.catch(err => console.log(err))
+.catch(err => window.alert('Oops! We had a problem pulling your data.  Please refresh and try again!'))
+}
 
-const getTripsApi = fetch('http://localhost:3001/api/v1/trips')
+const getDestinationsApi = () => {
+return fetch('http://localhost:3001/api/v1/destinations')
 .then(response => response.json())
-.then(data => (data))
-.catch(err => console.log(err))
+.catch(err => window.alert('Oops! We had a problem pulling your data.  Please refresh and try again!'))
+}
+
+const getTripsApi = () => {
+return fetch('http://localhost:3001/api/v1/trips')
+.then(response => response.json())
+.catch(err => window.alert('Oops! We had a problem pulling your data.  Please refresh and try again!'))
+}
 
 const postTripApi = (postObj) => {
 return fetch('http://localhost:3001/api/v1/trips', {
@@ -21,4 +30,8 @@ return fetch('http://localhost:3001/api/v1/trips', {
     })
 }
 
-export { getTravelersApi, getDestinationsApi, getTripsApi, postTripApi}
+const sendAllData = (id) => {
+    return Promise.all([getTravelersApi(), getDestinationsApi(), getTripsApi(), getCurrentTravelerApi(id)])
+}
+
+export { getTravelersApi, sendAllData, postTripApi }
