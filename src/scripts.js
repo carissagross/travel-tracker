@@ -4,6 +4,7 @@ import './css/styles.css';
 import Traveler from './Traveler'
 import TripsRepo from './TripsRepo';
 
+
 import { getTravelersApi, sendAllData, postTripApi } from './apiCalls'
 
 // GLOBAL VARIALBES //
